@@ -2,15 +2,19 @@
     margin: 0;
     padding: 0;
     border: 0;
-    cursor: none;
+    box-sizing: border-box;
 }
 
 body, html {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
+    cursor: none;
 }
 
 canvas {
     display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
 }

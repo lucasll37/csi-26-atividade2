@@ -21,8 +21,7 @@ audioPlane.addEventListener('ended', () => {
     audioPlane.play();
 });
 
-audioPlane.play();
-
+audioPlane.play()
 
 
 function resizeCanvas() {
@@ -77,7 +76,7 @@ function drawMissile() {
             fire = false;
         }
     }
-    
+
     ctx.save();
     ctx.translate(hold_x, hold_y);
     ctx.rotate(angleInRadians);
@@ -118,6 +117,7 @@ function update() {
 };
 
 requestAnimationFrame(update);
+
 
 canvas.addEventListener("click", () => {
     audioEmg.play();

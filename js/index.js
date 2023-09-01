@@ -1,9 +1,9 @@
 let mouseX = 0;
 let mouseY = 0;
-let fire = false;
 let speed = 5;
-let catched = false;
 let closeDistance = 20;
+let fire = false;
+let catched = false;
 const canvas = document.getElementsByTagName('canvas')[0];
 const ctx = canvas.getContext('2d');
 
@@ -21,7 +21,7 @@ audioPlane.addEventListener('ended', () => {
     audioPlane.play();
 });
 
-audioPlane.play()
+audioPlane.onload = audioPlane.play;
 
 
 function resizeCanvas() {
@@ -48,7 +48,15 @@ function drawPlane() {
     else {
         ctx.drawImage(plane, hold_x - 75, hold_y - 50, 150, 100);
         if(hold_y < canvas.height + 100) hold_y += 2;
-        else location.reload();
+        else {
+            // location.reload();
+            catched = false;
+            fire = false;
+            missile.src = 'assets/missile-cold.png';
+            plane.src = 'assets/plane.png';
+            resizeCanvas()
+            audioPlane.play();    
+        }
 
     }
 }

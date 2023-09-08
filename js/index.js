@@ -21,8 +21,8 @@ audioPlane.addEventListener('ended', () => {
     audioPlane.play();
 });
 
-audioPlane.onload = audioPlane.play;
-
+audioPlane.onload = () => audioPlane.play;
+setTimeout(() => audioPlane.play(), 1000);
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -49,7 +49,6 @@ function drawPlane() {
         ctx.drawImage(plane, hold_x - 75, hold_y - 50, 150, 100);
         if(hold_y < canvas.height + 100) hold_y += 2;
         else {
-            // location.reload();
             catched = false;
             fire = false;
             missile.src = 'assets/missile-cold.png';
@@ -127,12 +126,12 @@ function update() {
 requestAnimationFrame(update);
 
 
-canvas.addEventListener("click", () => {
-    audioEmg.play();
+canvas.addEventListener("mousedown", (event) => {
     if(!fire) {
         missile.src = 'assets/missile-hot.png';
         audioPlane.pause();
     }
     fire = true
+    audioEmg.play();
 });
 
